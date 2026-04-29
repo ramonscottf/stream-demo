@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>stream-video demo</title>
+  <script src="https://stream.fosterlabs.org/component.js"></script>
+  <style>
+    body { font-family: system-ui; max-width: 1000px; margin: 2rem auto; padding: 1rem; }
+    section { margin-bottom: 3rem; }
+    h2 { border-bottom: 2px solid #eee; padding-bottom: .5rem; }
+    .hero-demo { height: 400px; position: relative; overflow: hidden; border-radius: 12px; }
+    .hero-demo stream-video video { width: 100%; height: 100%; object-fit: cover; }
+    .player-demo stream-video video { width: 100%; max-width: 800px; border-radius: 8px; }
+    .iframe-demo iframe { width: 100%; aspect-ratio: 16/9; border: 0; border-radius: 8px; }
+    .thumb-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1rem; }
+    .thumb-grid img { width: 100%; border-radius: 8px; aspect-ratio: 16/9; object-fit: cover; }
+    code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; font-size: 90%; }
+    pre { background: #1e293b; color: #e2e8f0; padding: 1rem; border-radius: 8px; overflow: auto; }
+  </style>
+</head>
+<body>
+  <h1>&lt;stream-video&gt; component demo</h1>
+
+  <section>
+    <h2>Hero mode (autoplay muted loop)</h2>
+    <p>Uses optimized MP4 download URL. Best for landing-page background loops.</p>
+    <pre><code>&lt;stream-video uid="68b25df073544937c39521c4a1bdc5aa" mode="hero"&gt;&lt;/stream-video&gt;</code></pre>
+    <div class="hero-demo">
+      <stream-video uid="68b25df073544937c39521c4a1bdc5aa" mode="hero"></stream-video>
+    </div>
+  </section>
+
+  <section class="player-demo">
+    <h2>Player mode (HLS adaptive bitrate)</h2>
+    <p>Native HLS in Safari/iOS, hls.js elsewhere. Auto-falls back to MP4 if HLS fails.</p>
+    <pre><code>&lt;stream-video uid="35745dcbeb71f41738885c163145b257"&gt;&lt;/stream-video&gt;</code></pre>
+    <stream-video uid="35745dcbeb71f41738885c163145b257"></stream-video>
+  </section>
+
+  <section class="iframe-demo">
+    <h2>Iframe mode (Cloudflare's branded player)</h2>
+    <p>Easy embed. Use when you don't need custom styling.</p>
+    <pre><code>&lt;stream-video uid="ce9abde52b0df234c638f59e73966259" mode="iframe"&gt;&lt;/stream-video&gt;</code></pre>
+    <stream-video uid="ce9abde52b0df234c638f59e73966259" mode="iframe"></stream-video>
+  </section>
+
+  <section>
+    <h2>Thumbnail mode</h2>
+    <p>Just an &lt;img&gt; — for video grids, link previews, etc.</p>
+    <pre><code>&lt;stream-video uid="..." mode="thumbnail" poster-time="3s"&gt;&lt;/stream-video&gt;</code></pre>
+    <div class="thumb-grid">
+      <stream-video uid="68b25df073544937c39521c4a1bdc5aa" mode="thumbnail" poster-time="2s" alt="Hires hero"></stream-video>
+      <stream-video uid="35745dcbeb71f41738885c163145b257" mode="thumbnail" poster-time="5s" alt="Val Lunch"></stream-video>
+      <stream-video uid="76846e01a4930f2d15d7995803f7aac8" mode="thumbnail" poster-time="2s" alt="America Background"></stream-video>
+      <stream-video uid="ca01a4b132fec1bc596e4dc6abbb8998" mode="thumbnail" poster-time="2s" alt="Hires hero v2"></stream-video>
+      <stream-video uid="01ab0560b5313154f4c06efa8cd1e75f" mode="thumbnail" poster-time="10s" alt="Kara campaign"></stream-video>
+      <stream-video uid="ce9abde52b0df234c638f59e73966259" mode="thumbnail" poster-time="2s" alt="Kara kickoff"></stream-video>
+    </div>
+  </section>
+</body>
+</html>
